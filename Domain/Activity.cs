@@ -3,7 +3,7 @@ namespace Domain
     public class Activity
     {   
         //We are using Entity framework - Id properties are called guids (specifically needs to be called Id as a primary key)
-        public Guid Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         public string Title {get; set; }
 
