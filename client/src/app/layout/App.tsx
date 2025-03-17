@@ -6,18 +6,9 @@ import { useActivities } from "../../lib/hooks/useActivities";
 
 
 function App() {
-  // We expect an array within the activities variable
-  // const [activities, setActivities] = useState<Activity[]>([]);
   const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
   const [editMode, setEditMode] = useState(false);
   const {activities, isPending}= useActivities();  // custom hook for activities request
-
-  // useEffect(() => {
-  //   axios.get<Activity[]>('http://localhost:5000/api/activities')
-  //     .then(res => setActivities(res.data))
-
-  //   return () => { }
-  // }, []);
 
   const handleSelectActivity = (id: string) => {
     setSelectedActivity(activities!.find(x => x.id === id));
@@ -37,23 +28,6 @@ function App() {
     setEditMode(false);
   }
 
-  const handleSubmitForm = (activity: Activity) => {
-    // if (activity.id) {
-    //   setActivities(activities.map(x => x.id === activity.id ? activity : x))
-    // } else {
-    //   const newActivity = { ...activity, id: activities.length.toString() }
-    //   setSelectedActivity(newActivity);
-    //   setActivities([...activities, newActivity]);
-    // }
-    console.log(activity);
-    setEditMode(false);
-  }
-
-  const handleDelete = (id: string) => {
-    // setActivities(activities.filter(x=> x.id !==id));
-    console.log(id);
-  }
-
   return (
     <Box sx={{ bgcolor: '#eeee', minHeight: '100vh' }}>
       <CssBaseline />
@@ -71,8 +45,6 @@ function App() {
             editMode={editMode}
             openForm={handleOpenForm}
             closeForm={handleFormClose}
-            submitForm={handleSubmitForm}
-            deleteActivity={handleDelete}
           />
         )}
 
